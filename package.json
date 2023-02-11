@@ -1,0 +1,27 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js  -a -i ",
+    "start:dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Svetlana2505/node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Svetlana2505/node/issues"
+  },
+  "homepage": "https://github.com/Svetlana2505/node#readme",
+  "devDependencies": {
+    "commander": "^10.0.0",
+    "nodemon": "^2.0.20",
+    "uuid": "^9.0.0"
+  }
+}
