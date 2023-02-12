@@ -19,27 +19,39 @@ export const listContacts = async () => {
 };
 
 export const getContactById = async (contactId) => {
-  const data = await fs.readFile(contactsPath, "utf-8");
-  const next = JSON.parse(data);
-  const user = next.filter(({ id }) => id === contactId);
-  console.table(user);
+  try {
+    const data = await fs.readFile(contactsPath, "utf-8");
+    const next = JSON.parse(data);
+    const user = next.filter(({ id }) => id === contactId);
+    console.table(user);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const removeContact = async (contactId) => {
-  const data = await fs.readFile(contactsPath, "utf-8");
-  const next = JSON.parse(data);
-  const newContacts = next.filter(({ id }) => id !== contactId);
-  await fs.writeFile(contactsPath, JSON.stringify(newContacts));
+  try {
+    const data = await fs.readFile(contactsPath, "utf-8");
+    const next = JSON.parse(data);
+    const newContacts = next.filter(({ id }) => id !== contactId);
+    await fs.writeFile(contactsPath, JSON.stringify(newContacts));
 
-  listContacts();
+    listContacts();
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const addContact = async (name, email, phone) => {
-  const data = await fs.readFile(contactsPath, "utf-8");
-  const next = JSON.parse(data);
+  try {
+    const data = await fs.readFile(contactsPath, "utf-8");
+    const next = JSON.parse(data);
 
-  next.push({ name, email, phone, id: uuidv4() });
+    next.push({ name, email, phone, id: uuidv4() });
 
-  await fs.writeFile(contactsPath, JSON.stringify(next));
-  listContacts();
+    await fs.writeFile(contactsPath, JSON.stringify(next));
+    listContacts();
+  } catch (error) {
+    console.log(error);
+  }
 };
