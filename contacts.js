@@ -9,9 +9,13 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const contactsPath = path.join(__dirname, "db/contacts.json");
 
 export const listContacts = async () => {
-  const data = await fs.readFile(contactsPath, "utf-8");
-  const next = JSON.parse(data);
-  console.table(next);
+  try {
+    const data = await fs.readFile(contactsPath, "utf-8");
+    const next = JSON.parse(data);
+    console.table(next);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const getContactById = async (contactId) => {
